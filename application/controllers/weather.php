@@ -8,11 +8,12 @@ class Weather extends CI_Controller {
         $this->load->helper('url');
         $this->load->model('locations');
         $this->load->view('header');
+        $this->load->view('navbar');
 
         $data['countries'] = $this->locations->get_all_countries();
 
         $this->load->view('weather', $data);
-	$this->load->view('footer');
+	    $this->load->view('footer');
 	}
 }
 
