@@ -3,17 +3,15 @@
 class Weather extends CI_Controller {
 
 	public function index()
-	{
-        $this->load->database();
-        $this->load->helper('url');
+	{        
         $this->load->model('locations');
-        $this->load->view('header');
-        $this->load->view('navbar');
+        
+        $data['main_content'] = 'weather';
+        $data['title'] = 'Current Weather';
+        $data['data']['countries'] = $this->locations->get_all_countries();
 
-        $data['countries'] = $this->locations->get_all_countries();
+        $this->load->view('template', $data);
 
-        $this->load->view('weather', $data);
-	    $this->load->view('footer');
 	}
 }
 
