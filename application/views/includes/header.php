@@ -11,10 +11,14 @@
             <a class="brand" href="#">currentweather</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
+                    <?php foreach ($countries as $country): ?>
+                    <li><?= anchor(base_url() . $country->url_slug, $country->country_name, "title='Current weather forecast for all regions in $country->country_name'"); ?></li>
+                    <?php endforeach; ?>
+
+                    <!--
                     <li class="active"><a href="#">Canada</a></li>
                     <li><a href="#unites-states">United States</a></li>
                     <li><a href="#mexico">Mexico</a></li>
-                    <!--
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
                         <ul class="dropdown-menu">
