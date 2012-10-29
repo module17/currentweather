@@ -30,7 +30,7 @@
         <!-- This code is taken from http://twitter.github.com/bootstrap/examples/hero.html -->
 
         <header>
-            <?php $this->load->view('includes/header');?>
+            <?php $this->load->view('includes/header', $data);?>
         </header>
 
         <div class="container">
