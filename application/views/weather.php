@@ -9,18 +9,26 @@
 <div class="row">
     <div class="span4">
         <h2>Geolocation</h2>
-                
-        <ul id="countries">
-            <?php foreach ($countries as $country): ?>
-                <li><?= anchor(base_url() . $country->url_slug, $country->country_name, "title='Current weather forecast for all regions in $country->country_name'"); ?></li>
-            <?php endforeach; ?>
+
+        <?php if ($location_data): ?>
+
+        <ul>
+            <li>Country Code: <?=$location_data['country_code'];?></li>
+            <li>City: <?=$location_data['city_name'];?></li>
+            <li>Region: <?=$location_data['region_name'];?></li>
+            <li>Country: <?=$location_data['country_name'];?></li>
+            <li>Latitude: <?=$location_data['latitude'];?></li>
+            <li>Longitude: <?=$location_data['longitude'];?></li>
         </ul>
+        <?php endif; ?>
+
+        <?=$request_type;?>
                 
         <p><a class="btn" href="#">View details &raquo;</a></p>
     </div>
     <div class="span4">
         <h2>Twitter</h2>
-        <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+        <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <p><a class="btn" href="#">View details &raquo;</a></p>
     </div>
     <div class="span4">
