@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="<?=base_url('css/main.css');?>">
 
         <script src="<?=base_url('js/vendor/modernizr-2.6.1-respond-1.1.0.min.js');?>"></script>
+        <?php echo $data['map']['js']; ?>
     </head>
     <body>
         <!--[if lt IE 7]>
