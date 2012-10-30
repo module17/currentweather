@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </a>
-            <a class="brand" href="#">currentweather</a>
+            <a class="brand" href="<?=base_url();?>">currentweather</a>
             <div class="nav-collapse collapse">
                 <ul class="nav">
                     <?php foreach ($countries as $country): ?>
