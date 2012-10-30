@@ -8,7 +8,7 @@ class Geocode extends CI_Model {
         $ip = '173.223.11.17';
         $api_url = 'http://api.ipinfodb.com/v3/ip-city/?';
 
-        $vars = array(  'key' => 'a01f02afeb28a46765d4326e3b3e60aab61d1d4b74a387c72df62fb03283edbc',
+        $vars = array(  'key' => $this->config->item('ipinfodb_api_key'),
                         'ip' => $ip,
                         'format' => 'json');
 
