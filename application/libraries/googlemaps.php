@@ -15,6 +15,7 @@
  
 class Googlemaps {
 	
+	var $weather					= TRUE; 					// Whether Google Weather library should be enabled
 	var $adsense					= FALSE; 					// Whether Google Adsense For Content should be enabled
 	var $adsenseChannelNumber		= ''; 						// The Adsense channel number for tracking the performance of this AdUnit
 	var $adsenseFormat				= 'HALF_BANNER';			// The format of the AdUnit
@@ -99,7 +100,8 @@ class Googlemaps {
 	var $stylesAsMapTypes			= false;					// If applying styles, whether to apply them to the default map or add them as additional map types
 	var $stylesAsMapTypesDefault	= '';						// If $stylesAsMapTypes is true the default style. Should contain the 'Name' of the style
 	var	$tilt						= 0;						// The angle of tilt. Currently only supports the values 0 and 45 in SATELLITE and HYBRID map types and at certain zoom levels
-	var	$trafficOverlay				= FALSE;					// If set to TRUE will overlay traffic information onto the map by default 
+	var	$trafficOverlay				= FALSE;					// If set to TRUE will overlay traffic information onto the map by default
+	var	$weatherOverlay				= TRUE;					    // If set to TRUE will overlay weather information onto the map by default
 	var	$version					= "3";						// Version of the API being used. Not currently used in the library
 	var $zoom						= 13;						// The default zoom level of the map. If set to "auto" will autozoom/center to fit in all visible markers. If "auto", also overrides the $center parameter
 	var $zoomControlPosition		= '';						// The position of the Zoom control, eg. 'BOTTOM_RIGHT'
@@ -189,7 +191,7 @@ class Googlemaps {
 		$marker['onpositionchanged'] = '';						// JavaScript performed when the markers position changes
 		$marker['onrightclick'] = '';							// JavaScript performed when a right-click occurs on a marker
 		$marker['raiseondrag'] = TRUE;							// If FALSE, disables the raising and lowering of the icon when a marker is being dragged
-		$marker['shadow'] = '';									// The name or url of the icon’s shadow
+		$marker['shadow'] = '';									// The name or url of the iconï¿½s shadow
 		$marker['title'] = '';									// The tooltip text to show on hover
 		$marker['visible'] = TRUE;								// Defines if the marker is visible by default
 		$marker['zIndex'] = '';									// The zIndex of the marker. If two markers overlap, the marker with the higher zIndex will appear on top
@@ -1065,6 +1067,7 @@ class Googlemaps {
 		if ($this->language!="") { $apiLocation .= '&language='.$this->language; }
 		$libraries = array();
 		if ($this->adsense!="") { array_push($libraries, 'adsense'); }
+		if ($this->weather!="") { array_push($libraries, 'weather'); }
 		if ($this->places!="") { array_push($libraries, 'places'); }
 		if ($this->panoramio) { array_push($libraries, 'panoramio'); }
 		if ($this->drawing) { array_push($libraries, 'drawing'); }
@@ -1285,7 +1288,15 @@ class Googlemaps {
 			$this->output_js_contents .= $styleOutput.'
 				';
 		}
-		
+
+        if ($this->weatherOverlay) {
+            $this->output_js_contents .= 'var weatherLayer = new google.maps.weather.WeatherLayer({
+  temperatureUnits: google.maps.weather.TemperatureUnit.FAHRENHEIT
+});
+				weatherLayer.setMap('.$this->map_name.');
+				';
+        }
+
 		if ($this->trafficOverlay) {
 			$this->output_js_contents .= 'var trafficLayer = new google.maps.TrafficLayer();
 				trafficLayer.setMap('.$this->map_name.');
