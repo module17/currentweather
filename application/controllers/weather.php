@@ -36,6 +36,11 @@ class Weather extends CI_Controller {
         $data['data']['youtube_data'] = $this->youtube->get_videos($this->locations->location_data['latitude'],
                                                                     $this->locations->location_data['longitude']);
 
+        //get twitter
+        $data['data']['twitter_data'] = $this->twitter->get_tweets($this->locations->location_data['latitude'],
+            $this->locations->location_data['longitude']);
+
+        //configure the map settings
         $map_config['center'] = $this->locations->location_data['latitude'] . ', ' . $this->locations->location_data['longitude'];
         $map_config['map_height'] = '170px';
         //initialize our map passing config parameters
