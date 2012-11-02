@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="<?=base_url('css/main.css');?>">
 
         <script src="<?=base_url('js/vendor/modernizr-2.6.1-respond-1.1.0.min.js');?>"></script>
+        <script src="<?=base_url('js/vendor/moment-1.7.2.js');?>"></script>
         <?php echo $data['map']['js']; ?>
     </head>
     <body>
@@ -57,7 +58,18 @@
         <script src="<?=base_url('js/vendor/bootstrap.min.js');?>"></script>
 
         <script src="<?=base_url('js/main.js');?>"></script>
+        <script>
+        $(document).ready(function(){
+        var then = $('.then'),
+        date = moment(new Date(then.attr('data-date'))),
+        update = function(){
+        then.html(date.fromNow());
+        };
 
+        update();
+        setInterval(update, 60000);
+        });
+        </script>
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
