@@ -60,11 +60,15 @@
         <script src="<?=base_url('js/main.js');?>"></script>
         <script>
         $(document).ready(function(){
-        var then = $('.then'),
-        date = moment(new Date(then.attr('data-date'))),
-        update = function(){
-        then.html(date.fromNow());
-        };
+            update = function(){
+                var then = $('.then');
+                $.each(then, function() {
+                    date = moment(new Date($(this)
+                                            .attr('data-date')
+                                            .replace(/^\w+ (\w+) (\d+) ([\d:]+) \+0000 (\d+)$/, "$1 $2 $4 $3 UTC")));
+                    $(this).html(date.fromNow());
+                });
+            };
 
         update();
         setInterval(update, 60000);
