@@ -38,6 +38,7 @@
             <li>Relative Humidity: <?=$weather_data['current_observation']['relative_humidity']; ?></li>
             <li>Wind: <?=$weather_data['current_observation']['wind_string']; ?></li>
         </ul>
+        <p>Reported <span class="then" data-date="<?=$weather_data['current_observation']['observation_time_rfc822'];?>"></span></p>
         <?php endif; ?>
         <p><a class="btn" href="<?=$weather_data['current_observation']['forecast_url']; ?>">View 10 day forecast &raquo;</a></p>
     </div>
