@@ -48,8 +48,12 @@
         <?php if ($youtube_data): ?>
         <ul>
         <?php foreach ($youtube_data['feed']['entry'] as $entry): ?>
-          <li><strong><?=$entry['media$group']['media$credit'][0]['$t'];?></strong>
-              <img class="img-rounded" src="<?=$entry['media$group']['media$thumbnail'][0]['url'];?>" />
+          <li><img class="img-rounded youtube"
+                   id="<?=$entry['media$group']['yt$videoid']['$t'];?>"
+                   src="<?=$entry['media$group']['media$thumbnail'][0]['url'];?>"
+                   title="<?=$entry['title']['$t'];?>"
+                   style="cursor: pointer;" />
+              <strong><?=$entry['media$group']['media$credit'][0]['$t'];?></strong>
               <?=$entry['title']['$t'];?>
           </li>
         <?php endforeach; ?>
@@ -61,8 +65,8 @@
         <?php if ($twitter_data): ?>
         <ul>
             <?php foreach ($twitter_data['results'] as $tweet): ?>
-            <li><strong><?=$tweet['from_user'];?></strong> <?=$tweet['text'];?>
-                <img class="img-rounded" src="<?=$tweet['profile_image_url'];?>" />
+            <li><img class="img-rounded" src="<?=$tweet['profile_image_url'];?>" />
+                <strong><?=$tweet['from_user'];?></strong> <?=$tweet['text'];?>
                 <?=(isset($tweet['location']))?$tweet['location']:'NULL';?>
                 <span class="then" data-date="<?=$tweet['created_at'];?>"></span>
             </li>

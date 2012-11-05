@@ -19,7 +19,7 @@
         </style>
         <link rel="stylesheet" href="<?=base_url('css/bootstrap-responsive.min.css');?>">
         <link rel="stylesheet" href="<?=base_url('css/main.css');?>">
-
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/redmond/jquery-ui.css" />
         <script src="<?=base_url('js/vendor/modernizr-2.6.1-respond-1.1.0.min.js');?>"></script>
         <script src="<?=base_url('js/vendor/moment-1.7.2.js');?>"></script>
         <?php echo $data['map']['js']; ?>
@@ -53,11 +53,13 @@
         </div> <!-- /container -->
 
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1/jquery-ui.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.8.2.min.js"><\/script>')</script>
 
         <script src="<?=base_url('js/vendor/bootstrap.min.js');?>"></script>
 
         <script src="<?=base_url('js/main.js');?>"></script>
+        <script src="<?=base_url('js/vendor/jquery.youtubepopup-2.2.min.js');?>"></script>
         <script>
         $(document).ready(function(){
             update = function(){
@@ -72,6 +74,7 @@
 
         update();
         setInterval(update, 60000);
+        $("img.youtube").YouTubePopup({ idAttribute: 'id' });
         });
         </script>
         <script>
