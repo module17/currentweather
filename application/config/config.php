@@ -419,6 +419,12 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
+/*
+ * setup some api keys
+ */
+$config['ipinfodb_api_key'] = '';
+$config['wunderground_api_key'] = '';
+$config['eventful_api_key'] = '';
 
 /* End of file config.php */
 /* Location: ./application/config/config.php */
