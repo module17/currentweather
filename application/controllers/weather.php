@@ -22,7 +22,7 @@ class Weather extends CI_Controller {
         //if country, show regions
         if ($this->locations->request_type == 'COUNTRY') {
 
-            //$data['data']['regions'] = $this->locations->get_regions();
+            $data['data']['regions'] = $this->locations->get_regions($this->locations->location_data['country_code']);
         }
         //if region, show cities
         if ($this->locations->request_type == 'REGION') {
@@ -38,6 +38,10 @@ class Weather extends CI_Controller {
 
         //get twitter
         $data['data']['twitter_data'] = $this->twitter->get_tweets($this->locations->location_data['latitude'],
+            $this->locations->location_data['longitude']);
+
+        //get events
+        $data['data']['events_data'] = $this->eventful->get_events($this->locations->location_data['latitude'],
             $this->locations->location_data['longitude']);
 
         //configure the map settings
