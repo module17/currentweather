@@ -40,7 +40,6 @@
     </div>
     <div class="span4">
         <h2>Weather forecast</h2>
-
         <?php if ($weather_data): ?>
         <img class="img-rounded" src="<?=$weather_data['current_observation']['icon_url']; ?>" />
         <ul>
@@ -50,8 +49,8 @@
             <li>Wind: <?=$weather_data['current_observation']['wind_string']; ?></li>
         </ul>
         <p>Reported <span class="then" data-date="<?=$weather_data['current_observation']['observation_time_rfc822'];?>"></span></p>
-        <?php endif; ?>
         <p><a class="btn" href="<?=$weather_data['current_observation']['forecast_url']; ?>">View 10 day forecast &raquo;</a></p>
+        <?php endif; ?>
     </div>
     <div class="span8">
         <h2>Youtube</h2>
@@ -84,8 +83,6 @@
             <?php endforeach; ?>
         </ul>
         <?php endif; ?>
-
-        <p><a class="btn" href="#">View details &raquo;</a></p>
     </div>
 
     <div class="span8">
