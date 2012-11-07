@@ -84,7 +84,19 @@ class Locations extends CI_Model {
         }
     }
 
-    function get_regions() {
+    function get_regions($country_code) {
+        $sql = sprintf("SELECT * FROM regions_web WHERE country_code='%s' ORDER BY region_name", $country_code);
+
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+
+
+            return $query->result_array();
+
+        } else {
+            return false;
+        }
 
         
     }
