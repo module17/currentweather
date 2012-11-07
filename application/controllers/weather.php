@@ -16,7 +16,8 @@ class Weather extends CI_Controller {
         }
         //if there is no request in the url proceed to determine ip based location
         if ($this->locations->request_type == 'IP') {
-            $this->geocode->lookup_ip();
+            //$this->geocode->lookup_ip();
+            $this->geocode->lookup_ip_freegeo();
         }
 
         //if country, show regions
