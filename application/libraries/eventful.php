@@ -16,7 +16,8 @@ class eventful {
         $event_data = $CI->curl->simple_get($api_url . http_build_query($vars));
 
         if ($event_data) {
-            return json_decode($event_data, true);
+            $event_data_arr = json_decode($event_data, true);
+            return ($event_data_arr['events']) ? $event_data_arr : false;
         } else {
             return false;
         }
