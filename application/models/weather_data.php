@@ -24,8 +24,9 @@ class Weather_data extends CI_Model {
                  * conditions are found
                  */
                 //var_dump(json_decode($weather_data));
-
-                return json_decode($weather_data, true);
+                $weather_data_arr = json_decode($weather_data, true);
+                if (isset($weather_data_arr['response']['error'])) return false;
+                return $weather_data_arr;
             } else {
                 //no weather conditions found for coordinates
                 return false;
