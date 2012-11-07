@@ -26,6 +26,17 @@
 
         <?=$request_type;?>
 
+        <?php if (isset($regions)): ?>
+        <ul>
+            <?php foreach ($regions as $region): ?>
+                <li><?=anchor(base_url() . $region['region_url_slug'],
+                    $region['region_name'],
+                    "title='Current weather forecast for all cities in " . $region['region_name'] . "'"); ?>
+                </li>
+            <?php endforeach;?>
+        </ul>
+        <?php endif; ?>
+
     </div>
     <div class="span4">
         <h2>Weather forecast</h2>
@@ -75,5 +86,21 @@
         <?php endif; ?>
 
         <p><a class="btn" href="#">View details &raquo;</a></p>
+    </div>
+
+    <div class="span8">
+        <h2>Events</h2>
+        <?php if ($events_data): ?>
+        <ul>
+            <?php foreach ($events_data['events']['event'] as $event): ?>
+            <li><img class="img-rounded" src="<?=$event['image']['medium']['url'];?>" />
+                <strong><?=$event['title'];?></strong> <span class="then" data-date="<?=$event['start_time'];?>"><?=$event['start_time'];?></span><br/>
+                <?=$event['venue_name'];?><br/>
+                <?=$event['venue_address'];?>
+
+            </li>
+            <?php endforeach; ?>
+        </ul>
+        <?php endif; ?>
     </div>
 </div>
